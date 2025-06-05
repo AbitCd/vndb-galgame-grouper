@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+dist/
+build/
+*.egg-info/
+eggs/
+.eggs/
+
+# Virtual Environment
+venv/
+env/
+.env/
+.venv/
+
+# Cache and Model files
+fuzz/cache/
+*.pkl
+*.faiss
+*.onnx
+
+# Logs and Temporary files
+*.log
+*.tmp
+temp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.pytest_cache/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Keep these files
+!LICENSE.txt
+!requirements.txt
+!fuzz/data/

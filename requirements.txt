@@ -1,0 +1,7 @@
+appdirs
+aiohttp
+pydantic==1.10.7
+numpy
+faiss-cpu
+onnxruntime
+tokenizers

@@ -1,0 +1,4 @@
+[project]
+name = "VnGrouper"
+version = "1.0.0"
+description = "基于VNDB查询API的gal分组重命名工具"
