@@ -239,3 +239,22 @@ def get_most_similar_field(user_input, valid_fields):
     """
     matches = difflib.get_close_matches(user_input, valid_fields, n=1, cutoff=0.3)
     return matches[0] if matches else None
+
+def replace_unmatched_part(old_name: str, regex_str: str, keyword: str) -> str:
+    """
+    替换未匹配的部分
+    """            
+    import re
+    result = ""
+    last_end = 0
+    for match in re.finditer(regex_str, old_name):
+        start, end = match.span()
+        if last_end < start:
+            result += keyword  # 插入唯一未匹配部分
+        result += old_name[start:end]
+        last_end = end
+
+    if last_end < len(old_name):
+        result += keyword  # 未匹配部分在末尾
+
+    return result if result else keyword  # 全不匹配的情况

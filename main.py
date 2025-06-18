@@ -212,7 +212,7 @@ async def async_main(inputs: UserInputs):
         if inputs.normalize_name:
             strict_mode = "严格模式" if inputs.normalize_strict else "保留原始格式"
             safe_print(f"执行规范化 ({strict_mode})...")
-            recursive_rename(current_dir, keyword_to_dir, result_dict, inputs.normalize_strict)
+            recursive_rename(current_dir, keyword_to_dir, result_dict, inputs.normalize_strict, inputs.regex_filter)
             safe_print("规范化完成")
         else:
             safe_print("已跳过文件夹名称规范化")

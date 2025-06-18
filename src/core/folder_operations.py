@@ -3,6 +3,7 @@
 """
 import os
 from .file_utils import safe_folder_name, debug_print, move_folder
+from .data_parser import replace_unmatched_part
 
 def divide_into_vn_groups(folder_path, keyword_to_dir, result_dict):
     """
@@ -148,7 +149,7 @@ def normalize_group_names(current_dir, group_result, result_dict, field_path):
 
     return current_dir
 
-def recursive_rename(current_dir, keyword_to_dir, result_dict, strict_mode=False):
+def recursive_rename(current_dir, keyword_to_dir, result_dict, strict_mode=False,regex_str=""):
     """
     递归重命名文件夹，将名称规范化为通用名称
     
@@ -189,12 +190,12 @@ def recursive_rename(current_dir, keyword_to_dir, result_dict, strict_mode=False
 
         # 构建新名称
         if strict_mode:
-            # 严格模式：仅使用通用名
+            # 严格模式：将原目录名替换为通用名
             new_name = safe_folder_name(title)
         else:
-            # 保留原始格式：在原名后添加通用名
+            # 保留原始格式：用正则分割原目录名，保留匹配的部分，将非匹配部分替换为通用名后重组两部分
             if title.lower() not in item.lower():
-                new_name = f"{item} ({safe_folder_name(title)})"
+                new_name = replace_unmatched_part(item,regex_str,title)
             else:
                 new_name = item
 
