@@ -149,7 +149,7 @@ def normalize_group_names(current_dir, group_result, result_dict, field_path):
 
     return current_dir
 
-def recursive_rename(current_dir, keyword_to_dir, result_dict, strict_mode=False,regex_str=""):
+def recursive_rename(current_dir, keyword_to_dir, result_dict, strict_mode=False, regex_str=""):
     """
     递归重命名文件夹，将名称规范化为通用名称
     
@@ -165,7 +165,7 @@ def recursive_rename(current_dir, keyword_to_dir, result_dict, strict_mode=False
             continue
 
         # 如果是子目录，递归处理
-        recursive_rename(item_path, keyword_to_dir, result_dict, strict_mode)
+        recursive_rename(item_path, keyword_to_dir, result_dict, strict_mode=strict_mode, regex_str=regex_str)
 
         # 查找对应的关键词
         safe_name = safe_folder_name(item)
